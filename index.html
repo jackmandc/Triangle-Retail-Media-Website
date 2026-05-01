@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Triangle Retail Media | Win with Canadian Shoppers</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'trm-red':     '#CC1224',
+            'trm-red-dark':'#A50E1C',
+            'trm-green':   '#00653A',
+            'trm-dark':    '#0F1623',
+            'trm-charcoal':'#1E2535',
+            'trm-gray':    '#F7F8FA',
+            'trm-border':  '#E2E5EA',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+
+    .hero-bg {
+      background: linear-gradient(135deg, #0F1623 0%, #1E2535 60%, #0F1623 100%);
+    }
+    .hero-triangle {
+      position: absolute;
+      right: -5%;
+      top: -10%;
+      width: 55%;
+      height: 120%;
+      background: #CC1224;
+      clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+      opacity: 0.06;
+    }
+    .nav-solid {
+      background: rgba(15, 22, 35, 0.97) !important;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 24px rgba(0,0,0,0.25);
+    }
+    .solution-tab.active {
+      background: #CC1224;
+      color: #fff;
+    }
+    .solution-tab:not(.active):hover {
+      background: #fff;
+      color: #0F1623;
+    }
+    input, textarea, select {
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: #CC1224;
+      box-shadow: 0 0 0 3px rgba(204,18,36,0.12);
+    }
+    .banner-pill {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+    .stat-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(6px);
+    }
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .checklist li .check-icon {
+      flex-shrink: 0;
+      margin-top: 2px;
+      width: 1.25rem;
+      height: 1.25rem;
+      background: #CC1224;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .step-dot {
+      width: 3rem;
+      height: 3rem;
+      background: #CC1224;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .hatch-bg {
+      background-image: repeating-linear-gradient(
+        45deg,
+        rgba(204,18,36,0.07) 0px,
+        rgba(204,18,36,0.07) 1px,
+        transparent 1px,
+        transparent 28px
+      );
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.5s ease forwards; }
+  </style>
+</head>
+<body class="font-sans text-gray-900 antialiased">
+
+<!-- ─── NAV ─────────────────────────────────────────────────────────────── -->
+<nav id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300"
+     style="background:rgba(15,22,35,0.82);backdrop-filter:blur(8px);">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-2.5">
+      <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
+        <polygon points="16,2 30,29 2,29" fill="#CC1224"/>
+        <polygon points="16,9 25,27 7,27" fill="none" stroke="white" stroke-width="1.5" opacity="0.25"/>
+      </svg>
+      <span class="text-white font-extrabold text-base tracking-tight leading-none">
+        Triangle<span class="text-trm-red"> Retail Media</span>
+      </span>
+    </a>
+
+    <!-- Desktop links -->
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+      <a href="#why-trm"      class="text-gray-300 hover:text-white transition-colors">Why TRM</a>
+      <a href="#solutions"    class="text-gray-300 hover:text-white transition-colors">Solutions</a>
+      <a href="#measurement"  class="text-gray-300 hover:text-white transition-colors">Measurement</a>
+      <a href="#contact"      class="text-gray-300 hover:text-white transition-colors">Contact</a>
+    </div>
+
+    <!-- Desktop CTAs -->
+    <div class="hidden md:flex items-center gap-3">
+      <a href="#contact"
+         class="text-sm font-semibold text-white border border-white/30 hover:border-white/70 px-4 py-2 rounded transition-all">
+        Request Media Kit
+      </a>
+      <a href="#contact"
+         class="text-sm font-semibold bg-trm-red hover:bg-trm-red-dark text-white px-4 py-2 rounded transition-colors">
+        Book a Meeting
+      </a>
+    </div>
+
+    <!-- Hamburger -->
+    <button id="menu-btn" class="md:hidden text-white p-1.5">
+      <svg id="icon-open"  class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+      <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu"
+       class="hidden md:hidden border-t border-white/10 bg-trm-dark px-6 py-5 space-y-4 text-sm font-medium">
+    <a href="#why-trm"     class="block text-gray-300 hover:text-white transition-colors">Why TRM</a>
+    <a href="#solutions"   class="block text-gray-300 hover:text-white transition-colors">Solutions</a>
+    <a href="#measurement" class="block text-gray-300 hover:text-white transition-colors">Measurement</a>
+    <a href="#contact"     class="block text-gray-300 hover:text-white transition-colors">Contact</a>
+    <div class="pt-2 flex flex-col gap-2">
+      <a href="#contact" class="text-center font-semibold text-white border border-white/30 px-4 py-2.5 rounded">Request Media Kit</a>
+      <a href="#contact" class="text-center font-semibold bg-trm-red text-white px-4 py-2.5 rounded">Book a Meeting</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ─── HERO ──────────────────────────────────────────────────────────────── -->
+<section class="relative min-h-screen flex items-center overflow-hidden hero-bg">
+  <div class="hero-triangle"></div>
+  <div class="absolute top-0 inset-x-0 h-1 bg-trm-red"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 py-36 grid md:grid-cols-2 gap-16 items-center w-full">
+
+    <!-- Copy -->
+    <div>
+      <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white
+                  text-xs font-semibold tracking-widest uppercase px-3 py-1.5 rounded-full mb-8">
+        <span class="w-1.5 h-1.5 bg-trm-red rounded-full"></span>
+        A Canadian Tire Corporation Company
+      </div>
+      <h1 class="text-5xl md:text-6xl xl:text-[4.25rem] font-black text-white leading-[1.04] tracking-tight mb-6">
+        Win with<br>
+        <span class="text-trm-red">Canadian</span><br>
+        Shoppers.
+      </h1>
+      <p class="text-lg text-gray-300 leading-relaxed mb-10 max-w-lg">
+        Triangle Retail Media connects brands to Canada's most engaged shoppers—powered
+        by Triangle Rewards, one of Canada's largest loyalty ecosystems. Retail-verified
+        audiences. Full-funnel activation. Measurable growth.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="#contact"
+           class="inline-flex items-center justify-center gap-2 bg-trm-red hover:bg-trm-red-dark
+                  text-white font-bold px-8 py-4 rounded text-sm transition-colors">
+          Request a Media Kit
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+        <a href="#contact"
+           class="inline-flex items-center justify-center gap-2 text-white font-bold
+                  border border-white/40 hover:border-white px-8 py-4 rounded text-sm transition-colors">
+          Book a Meeting
+        </a>
+      </div>
+    </div>
+
+    <!-- Stats grid -->
+    <div class="grid grid-cols-2 gap-4">
+      <div class="stat-card rounded-xl p-6">
+        <div class="text-4xl font-black text-trm-red mb-1">10M+</div>
+        <div class="text-sm text-gray-300 font-medium">Triangle Rewards Members</div>
+      </div>
+      <div class="stat-card rounded-xl p-6">
+        <div class="text-4xl font-black text-trm-red mb-1">1,700+</div>
+        <div class="text-sm text-gray-300 font-medium">Retail Locations Nationwide</div>
+      </div>
+      <div class="stat-card rounded-xl p-6">
+        <div class="text-4xl font-black text-trm-red mb-1">58M+</div>
+        <div class="text-sm text-gray-300 font-medium">Annual Customer Transactions</div>
+      </div>
+      <div class="stat-card rounded-xl p-6">
+        <div class="text-4xl font-black text-trm-red mb-1">6</div>
+        <div class="text-sm text-gray-300 font-medium leading-snug">Retail Banners — CT, SportChek, Mark's & more</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll cue -->
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30 select-none">
+    <span class="text-[10px] tracking-widest uppercase">Scroll</span>
+    <svg class="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+    </svg>
+  </div>
+</section>
+
+
+<!-- ─── BANNER STRIP ───────────────────────────────────────────────────────── -->
+<section class="bg-trm-dark border-t border-white/10 py-10">
+  <div class="max-w-7xl mx-auto px-6">
+    <p class="text-center text-gray-500 text-[10px] tracking-widest uppercase font-semibold mb-7">
+      Reach Shoppers Across Canada's Leading Retail Banners
+    </p>
+    <div class="flex flex-wrap justify-center items-center gap-4">
+      <div class="banner-pill rounded-lg px-7 py-3 text-white font-bold text-sm">Canadian Tire</div>
+      <div class="banner-pill rounded-lg px-7 py-3 text-white font-bold text-sm">SportChek</div>
+      <div class="banner-pill rounded-lg px-7 py-3 text-white font-bold text-sm">Mark's</div>
+      <div class="banner-pill rounded-lg px-7 py-3 text-white font-bold text-sm">Atmosphere</div>
+      <div class="banner-pill rounded-lg px-7 py-3 text-white font-bold text-sm">Pro Hockey Life</div>
+      <div class="banner-pill rounded-lg px-7 py-3 text-white font-bold text-sm">Party City</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── WHY TRM ────────────────────────────────────────────────────────────── -->
+<section id="why-trm" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <div class="max-w-3xl mb-16">
+      <p class="text-trm-red text-[10px] font-bold tracking-widest uppercase mb-4">Why Triangle Retail Media</p>
+      <h2 class="text-4xl md:text-5xl font-black text-trm-dark leading-tight mb-5">
+        The data advantage brands can't get anywhere else.
+      </h2>
+      <p class="text-lg text-gray-500 leading-relaxed">
+        Most media networks sell audiences built on modelled behaviour. TRM activates on verified
+        purchase signals—real transactions from real Canadian shoppers, captured across thousands of
+        categories and life moments.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <div class="border border-gray-100 rounded-2xl p-8 hover:shadow-lg transition-shadow">
+        <div class="w-11 h-11 bg-red-50 rounded-xl flex items-center justify-center mb-5">
+          <svg class="w-5 h-5 text-trm-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0
+                 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622
+                 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+        </div>
+        <h3 class="text-base font-bold text-trm-dark mb-3">Retail-Verified First-Party Data</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">
+          Powered by Triangle Rewards, TRM audiences are built on real purchase
+          behaviour—not modelled or inferred. Reach verified shoppers, not lookalikes.
+        </p>
+      </div>
+
+      <div class="border border-gray-100 rounded-2xl p-8 hover:shadow-lg transition-shadow">
+        <div class="w-11 h-11 bg-red-50 rounded-xl flex items-center justify-center mb-5">
+          <svg class="w-5 h-5 text-trm-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <h3 class="text-base font-bold text-trm-dark mb-3">Full-Funnel Media Activation</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">
+          From awareness to conversion—activate the same high-value audiences across owned
+          retail properties and premium offsite channels like Meta, Google, and YouTube.
+        </p>
+      </div>
+
+      <div class="border border-gray-100 rounded-2xl p-8 hover:shadow-lg transition-shadow">
+        <div class="w-11 h-11 bg-red-50 rounded-xl flex items-center justify-center mb-5">
+          <svg class="w-5 h-5 text-trm-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0
+                 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2
+                 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+          </svg>
+        </div>
+        <h3 class="text-base font-bold text-trm-dark mb-3">Closed-Loop Measurement</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">
+          Connect media investment to real sales outcomes. TRM delivers transparent reporting
+          including sales lift, incrementality, and audience-level performance insights.
+        </p>
+      </div>
+
+      <div class="border border-gray-100 rounded-2xl p-8 hover:shadow-lg transition-shadow">
+        <div class="w-11 h-11 bg-red-50 rounded-xl flex items-center justify-center mb-5">
+          <svg class="w-5 h-5 text-trm-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857
+                 M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002
+                 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+        </div>
+        <h3 class="text-base font-bold text-trm-dark mb-3">Strategic Partnership</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">
+          TRM co-creates strategies, audiences, and activation plans with marketers and
+          agencies—aligning every dollar to your brand growth objectives, not just media efficiency.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── SOLUTIONS ─────────────────────────────────────────────────────────── -->
+<section id="solutions" class="py-24 bg-trm-gray">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <div class="max-w-3xl mb-12">
+      <p class="text-trm-red text-[10px] font-bold tracking-widest uppercase mb-4">Solutions</p>
+      <h2 class="text-4xl md:text-5xl font-black text-trm-dark leading-tight mb-5">
+        One platform. Every moment of the shopping journey.
+      </h2>
+      <p class="text-lg text-gray-500 leading-relaxed">
+        TRM offers a full suite of media solutions—from audience building to activation to
+        measurement—designed around how Canadian shoppers actually discover, consider, and buy.
+      </p>
+    </div>
+
+    <!-- Tab nav -->
+    <div class="flex flex-wrap gap-2 mb-10" id="tab-nav">
+      <button class="solution-tab active text-sm font-semibold px-5 py-2.5 rounded-full transition-all"
+              data-tab="audience">Audience Solutions</button>
+      <button class="solution-tab text-sm font-semibold px-5 py-2.5 rounded-full transition-all text-gray-600"
+              data-tab="onsite">Onsite Media</button>
+      <button class="solution-tab text-sm font-semibold px-5 py-2.5 rounded-full transition-all text-gray-600"
+              data-tab="offsite">Offsite Media</button>
+      <button class="solution-tab text-sm font-semibold px-5 py-2.5 rounded-full transition-all text-gray-600"
+              data-tab="selfserve">Self-Serve</button>
+      <button class="solution-tab text-sm font-semibold px-5 py-2.5 rounded-full transition-all text-gray-600"
+              data-tab="reporting">Reporting & Insights</button>
+    </div>
+
+    <!-- Panels -->
+    <div id="tab-panels">
+
+      <!-- AUDIENCE -->
+      <div class="tab-panel" data-panel="audience">
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <h3 class="text-2xl font-bold text-trm-dark mb-4">The Core Engine of TRM</h3>
+            <p class="text-gray-500 leading-relaxed mb-6">
+              Our audience solutions are built entirely on verified purchase behaviour from Triangle
+              Rewards—giving brands access to shoppers defined by what they actually buy, not what they browse.
+            </p>
+            <ul class="checklist">
+              <li>
+                <span class="check-icon"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                <span class="text-gray-600 text-sm">Category &amp; lifecycle audiences — Auto Owners, Families with Kids, New Homeowners</span>
+              </li>
+              <li>
+                <span class="check-icon"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                <span class="text-gray-600 text-sm">Lifestyle &amp; passion segments — sport, outdoor, fashion, value seekers</span>
+              </li>
+              <li>
+                <span class="check-icon"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                <span class="text-gray-600 text-sm">Custom audience creation by category, banner, or business objective</span>
+              </li>
+              <li>
+                <span class="check-icon"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                <span class="text-gray-600 text-sm">Available for both onsite and offsite activation — same audience, every channel</span>
+              </li>
+            </ul>
+          </div>
+          <div class="bg-trm-dark rounded-2xl p-8 text-white">
+            <p class="text-[10px] text-gray-400 uppercase tracking-widest font-semibold mb-6">Sample Audience Segments</p>
+            <div class="space-y-3">
+              <div class="flex items-center justify-between bg-white/8 rounded-lg px-4 py-3">
+                <span class="text-sm font-medium">Auto Owners &amp; Enthusiasts</span>
+                <span class="text-xs text-trm-red font-bold">3.2M+ reach</span>
+              </div>
+              <div class="flex items-center justify-between bg-white/8 rounded-lg px-4 py-3">
+                <span class="text-sm font-medium">Families with Children</span>
+                <span class="text-xs text-trm-red font-bold">2.8M+ reach</span>
+              </div>
+              <div class="flex items-center justify-between bg-white/8 rounded-lg px-4 py-3">
+                <span class="text-sm font-medium">Sports &amp; Outdoor Enthusiasts</span>
+                <span class="text-xs text-trm-red font-bold">4.1M+ reach</span>
+              </div>
+              <div class="flex items-center justify-between bg-white/8 rounded-lg px-4 py-3">
+                <span class="text-sm font-medium">New Homeowners</span>
+                <span class="text-xs text-trm-red font-bold">1.4M+ reach</span>
+              </div>
+              <div class="flex items-center justify-between bg-white/8 rounded-lg px-4 py-3">
+                <span class="text-sm font-medium">Value Seekers</span>
+                <span class="text-xs text-trm-red font-bold">5.6M+ reach</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ONSITE -->
+      <div class="tab-panel hidden" data-panel="onsite">
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <h3 class="text-2xl font-bold text-trm-dark mb-4">Media Where Purchase Decisions Happen</h3>
+            <p class="text-gray-500 leading-relaxed mb-6">
+              Onsite media places your brand directly within Canadian Tire retail environments—reaching shoppers
+              who are actively planning, browsing, and buying. These are high-intent moments that drive
+              consideration and conversion.
+            </p>
+            <ul class="checklist">
+              <li>
+                <span class="check-icon"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                <span class="text-gray-600 text-sm">Display and contextual placements across retail properties</span>
+              </li>
+              <li>
+                <span class="check-icon"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                <span class="text-gray-600 text-sm">Sponsored product ads and search-level category targeting</span>
+              </li>
+              <li>
+                <span class="check-icon"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                <span class="text-gray-600 text-sm">Email and promotional integrations to engaged loyalty members</span>
+              </li>
+              <li>
+                <span class="check-icon"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                <span class="text-gray-600 text-sm">Weather-triggered and occasion-based media activations</span>
+              </li>
+            </ul>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-white border border-gray-100 rounded-xl p-6 shadow-sm">
+              <div class="text-2xl font-black text-trm-red mb-2">Display</div>
+              <p class="text-xs text-gray-500 leading-relaxed">Contextual banner placements within active shopping sessions</p>
+            </div>
+            <div class="bg-white border border-gray-100 rounded-xl p-6 shadow-sm">
+              <div class="text-2xl font-black text-trm-red mb-2">Sponsored</div>
+              <p class="text-xs text-gray-500 leading-relaxed">Product and search ads at the moment of purchase intent</p>
+            </div>
+            <div class="bg-white border border-gray-100 rounded-xl p-6 shadow-sm">
+              <div class="text-2xl font-black text-trm-red mb-2">Email</div>
+              <p class="text-xs text-gray-500 leading-relaxed">Targeted messaging to 10M+ Triangle Rewards members</p>
+            </div>
+            <div class="bg-white border border-gray-100 rounded-xl p-6 shadow-sm">
+              <div class="text-2xl font-black text-trm-red mb-2">Moments</div>
+              <p class="text-xs text-gray-500 leading-relaxed">Weather &amp; occasion triggers for peak relevance and reach</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OFFSITE -->
+      <div class="tab-panel hidden" data-panel="offsite">
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <h3 class="text-2xl font-bold text-trm-dark mb-4">Extend Your Reach Beyond Retail</h3>
+            <p class="text-gray-500 leading-relaxed mb-6">
+              TRM audiences don't stay on-site. Activate the same retail-verified shopper segments across
+              premium offsite platforms—reaching your best customers wherever they spend their time online.
+            </p>
+            <ul class="checklist">
+              <li>
+                <span class="check-icon"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                <span class="text-gray-600 text-sm">Meta (Facebook &amp; Instagram) — awareness and consideration at scale</span>
+              </li>
+              <li>
+                <span class="check-icon"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                <span class="text-gray-600 text-sm">Google DV360 &amp; YouTube — video and display across premium inventory</span>
+              </li>
+              <li>
+                <span class="check-icon"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                <span class="text-gray-600 text-sm">Pinterest — discovery and inspiration-led engagement</span>
+              </li>
+              <li>
+                <span class="check-icon"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                <span class="text-gray-600 text-sm">Sequential messaging and retargeting for full-funnel continuity</span>
+              </li>
+            </ul>
+          </div>
+          <div class="bg-trm-dark rounded-2xl p-8">
+            <p class="text-[10px] text-gray-400 uppercase tracking-widest font-semibold mb-6 text-white">Offsite Platform Partners</p>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="bg-white/10 rounded-xl p-5 text-center">
+                <div class="text-white font-bold text-sm">Meta</div>
+                <div class="text-gray-400 text-xs mt-1">Facebook &amp; Instagram</div>
+              </div>
+              <div class="bg-white/10 rounded-xl p-5 text-center">
+                <div class="text-white font-bold text-sm">Google</div>
+                <div class="text-gray-400 text-xs mt-1">DV360 &amp; YouTube</div>
+              </div>
+              <div class="bg-white/10 rounded-xl p-5 text-center">
+                <div class="text-white font-bold text-sm">Pinterest</div>
+                <div class="text-gray-400 text-xs mt-1">Inspiration &amp; Discovery</div>
+              </div>
+              <div class="bg-white/10 rounded-xl p-5 text-center">
+                <div class="text-white font-bold text-sm">Programmatic</div>
+                <div class="text-gray-400 text-xs mt-1">Premium Inventory</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SELF-SERVE -->
+      <div class="tab-panel hidden" data-panel="selfserve">
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <h3 class="text-2xl font-bold text-trm-dark mb-4">Built for Advanced Buyers</h3>
+            <p class="text-gray-500 leading-relaxed mb-6">
+              For sophisticated agencies and advertisers who want speed, scale, and control—TRM's self-serve
+              activation gives you direct access to Triangle Rewards audiences within your existing buying platforms.
+            </p>
+            <ul class="checklist">
+              <li>
+                <span class="check-icon"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                <span class="text-gray-600 text-sm">Privacy-safe self-serve access to Triangle Rewards segments</span>
+              </li>
+              <li>
+                <span class="check-icon"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                <span class="text-gray-600 text-sm">Activate directly within Meta and DV360 environments</span>
+              </li>
+              <li>
+                <span class="check-icon"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                <span class="text-gray-600 text-sm">Full buying control with TRM governance and measurement overlay</span>
+              </li>
+              <li>
+                <span class="check-icon"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                <span class="text-gray-600 text-sm">Designed for scale, speed, and buying simplicity</span>
+              </li>
+            </ul>
+          </div>
+          <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm">
+            <p class="text-[10px] text-gray-400 uppercase tracking-widest font-semibold mb-6">Who It's For</p>
+            <div class="space-y-5">
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-trm-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="text-sm font-bold text-trm-dark">Large Independent Agencies</div>
+                  <p class="text-xs text-gray-500 mt-1 leading-relaxed">Direct access to Canada's most powerful retail data within your existing buying workflow.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-trm-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0
+                         00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2
+                         0 00-2 2v10a2 2 0 002 2z"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="text-sm font-bold text-trm-dark">National Brand Advertisers</div>
+                  <p class="text-xs text-gray-500 mt-1 leading-relaxed">Scale campaigns fast with always-on access to verified Canadian shopper segments.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REPORTING -->
+      <div class="tab-panel hidden" data-panel="reporting">
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <h3 class="text-2xl font-bold text-trm-dark mb-4">Know Exactly What Worked</h3>
+            <p class="text-gray-500 leading-relaxed mb-6">
+              TRM's measurement framework goes beyond standard media reporting. We connect your media
+              investment directly to sales outcomes—so you can prove impact, learn fast, and scale what works.
+            </p>
+            <ul class="checklist">
+              <li>
+                <span class="check-icon"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                <span class="text-gray-600 text-sm">Standard media KPIs — delivery, reach, frequency, CTR, viewability</span>
+              </li>
+              <li>
+                <span class="check-icon"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                <span class="text-gray-600 text-sm">Sales lift and incrementality analysis for endemic partners</span>
+              </li>
+              <li>
+                <span class="check-icon"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                <span class="text-gray-600 text-sm">Audience-level performance and funnel insights</span>
+              </li>
+              <li>
+                <span class="check-icon"><svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                <span class="text-gray-600 text-sm">Benchmarks and optimization learnings for future campaigns</span>
+              </li>
+            </ul>
+          </div>
+          <div class="bg-trm-dark rounded-2xl p-8 text-white">
+            <p class="text-[10px] text-gray-400 uppercase tracking-widest font-semibold mb-6">Measurement Outputs</p>
+            <div class="space-y-4">
+              <div class="flex items-start gap-4">
+                <div class="w-2 h-2 bg-trm-red rounded-full flex-shrink-0 mt-1.5"></div>
+                <div>
+                  <div class="text-sm font-semibold">Campaign Delivery Report</div>
+                  <div class="text-xs text-gray-400 mt-0.5">Impressions, reach, frequency, click-through</div>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="w-2 h-2 bg-trm-red rounded-full flex-shrink-0 mt-1.5"></div>
+                <div>
+                  <div class="text-sm font-semibold">Sales Lift Study</div>
+                  <div class="text-xs text-gray-400 mt-0.5">Incremental revenue and unit uplift vs. control</div>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="w-2 h-2 bg-trm-red rounded-full flex-shrink-0 mt-1.5"></div>
+                <div>
+                  <div class="text-sm font-semibold">Audience Insights Report</div>
+                  <div class="text-xs text-gray-400 mt-0.5">Who responded, what they bought, how behaviour shifted</div>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="w-2 h-2 bg-trm-red rounded-full flex-shrink-0 mt-1.5"></div>
+                <div>
+                  <div class="text-sm font-semibold">Optimization Playbook</div>
+                  <div class="text-xs text-gray-400 mt-0.5">Actionable learnings and recommendations to scale</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /tab-panels -->
+  </div>
+</section>
+
+
+<!-- ─── HOW IT WORKS ──────────────────────────────────────────────────────── -->
+<section class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="max-w-3xl mb-16">
+      <p class="text-trm-red text-[10px] font-bold tracking-widest uppercase mb-4">How It Works</p>
+      <h2 class="text-4xl md:text-5xl font-black text-trm-dark leading-tight mb-5">
+        From insight to impact in three steps.
+      </h2>
+      <p class="text-lg text-gray-500 leading-relaxed">
+        Every TRM campaign follows a disciplined process designed to connect your objectives
+        to real Canadian shopper outcomes.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-10">
+      <div>
+        <div class="flex items-center gap-4 mb-6">
+          <div class="step-dot">1</div>
+          <div class="flex-1 h-px bg-gray-100 md:hidden"></div>
+        </div>
+        <h3 class="text-xl font-bold text-trm-dark mb-3">Define Your Audience</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">
+          Work with TRM strategists to identify the exact shopper segments that matter most for
+          your category, occasion, or brand objective. Audiences are built on verified purchase
+          data—not modelled proxies.
+        </p>
+      </div>
+      <div>
+        <div class="flex items-center gap-4 mb-6">
+          <div class="step-dot">2</div>
+          <div class="flex-1 h-px bg-gray-100 md:hidden"></div>
+        </div>
+        <h3 class="text-xl font-bold text-trm-dark mb-3">Activate Across Channels</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">
+          Launch your campaign across onsite retail environments and premium offsite platforms—reaching
+          your audience at high-value moments throughout the shopping journey, from discovery to purchase.
+        </p>
+      </div>
+      <div>
+        <div class="flex items-center gap-4 mb-6">
+          <div class="step-dot">3</div>
+        </div>
+        <h3 class="text-xl font-bold text-trm-dark mb-3">Measure Real Impact</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">
+          Receive transparent, closed-loop reporting that connects every media dollar to sales outcomes.
+          Understand what worked, who responded, and how to scale it—backed by TRM's dedicated
+          measurement and insights team.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── MEASUREMENT ───────────────────────────────────────────────────────── -->
+<section id="measurement" class="py-24 bg-trm-dark relative overflow-hidden">
+  <div class="absolute inset-0 hatch-bg"></div>
+  <div class="relative max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+
+      <div>
+        <p class="text-trm-red text-[10px] font-bold tracking-widest uppercase mb-4">Measurement &amp; Insights</p>
+        <h2 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+          Prove it. Learn it.<br>Scale it.
+        </h2>
+        <p class="text-lg text-gray-400 leading-relaxed mb-8">
+          TRM's closed-loop measurement framework is one of the most transparent reporting capabilities
+          in Canadian retail media. Because we own the transaction data, we can connect your media
+          investment to verified sales—at the audience level.
+        </p>
+        <div class="space-y-5">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 bg-trm-red/20 border border-trm-red/30 rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-trm-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2
+                     0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2
+                     2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-white font-semibold text-sm mb-1">Sales Lift &amp; Incrementality</div>
+              <p class="text-gray-400 text-sm leading-relaxed">Understand the true incremental revenue your campaign generated—beyond correlation, to causal impact.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 bg-trm-red/20 border border-trm-red/30 rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-trm-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857
+                     M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002
+                     5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-white font-semibold text-sm mb-1">Audience-Level Performance</div>
+              <p class="text-gray-400 text-sm leading-relaxed">See how different segments responded—who purchased, what they bought, and how the campaign changed their behaviour.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 bg-trm-red/20 border border-trm-red/30 rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-trm-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-white font-semibold text-sm mb-1">Actionable Optimization Learnings</div>
+              <p class="text-gray-400 text-sm leading-relaxed">Every campaign generates benchmarks and playbooks to help you invest smarter in the next one.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fake dashboard -->
+      <div class="bg-trm-charcoal border border-white/10 rounded-2xl p-7">
+        <div class="flex items-center justify-between mb-6">
+          <span class="text-white text-sm font-semibold">Campaign Performance Dashboard</span>
+          <span class="text-[10px] text-gray-500 uppercase tracking-wide font-semibold">Sample Output</span>
+        </div>
+        <div class="grid grid-cols-3 gap-3 mb-6">
+          <div class="bg-white/5 rounded-xl p-4 text-center">
+            <div class="text-2xl font-black text-trm-green mb-0.5">+18%</div>
+            <div class="text-[11px] text-gray-400">Sales Lift</div>
+          </div>
+          <div class="bg-white/5 rounded-xl p-4 text-center">
+            <div class="text-2xl font-black text-trm-green mb-0.5">4.2x</div>
+            <div class="text-[11px] text-gray-400">ROAS</div>
+          </div>
+          <div class="bg-white/5 rounded-xl p-4 text-center">
+            <div class="text-2xl font-black text-trm-green mb-0.5">2.8M</div>
+            <div class="text-[11px] text-gray-400">Verified Reach</div>
+          </div>
+        </div>
+        <p class="text-[11px] text-gray-500 mb-3 uppercase tracking-wide font-semibold">Weekly Sales Index — Exposed vs. Control</p>
+        <div class="space-y-2 mb-4">
+          <div class="flex items-center gap-3">
+            <span class="text-[11px] text-gray-500 w-5">W1</span>
+            <div class="flex-1 relative h-5 bg-white/5 rounded-full overflow-hidden">
+              <div class="absolute left-0 inset-y-0 bg-gray-500/40 rounded-full" style="width:44%"></div>
+              <div class="absolute left-0 inset-y-0 bg-trm-green/50 rounded-full" style="width:52%"></div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-[11px] text-gray-500 w-5">W2</span>
+            <div class="flex-1 relative h-5 bg-white/5 rounded-full overflow-hidden">
+              <div class="absolute left-0 inset-y-0 bg-gray-500/40 rounded-full" style="width:44%"></div>
+              <div class="absolute left-0 inset-y-0 bg-trm-green/50 rounded-full" style="width:62%"></div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-[11px] text-gray-500 w-5">W3</span>
+            <div class="flex-1 relative h-5 bg-white/5 rounded-full overflow-hidden">
+              <div class="absolute left-0 inset-y-0 bg-gray-500/40 rounded-full" style="width:44%"></div>
+              <div class="absolute left-0 inset-y-0 bg-trm-green/50 rounded-full" style="width:71%"></div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-[11px] text-gray-500 w-5">W4</span>
+            <div class="flex-1 relative h-5 bg-white/5 rounded-full overflow-hidden">
+              <div class="absolute left-0 inset-y-0 bg-gray-500/40 rounded-full" style="width:44%"></div>
+              <div class="absolute left-0 inset-y-0 bg-trm-green/50 rounded-full" style="width:80%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="flex gap-5">
+          <div class="flex items-center gap-1.5 text-[11px] text-gray-400">
+            <div class="w-2.5 h-2.5 bg-gray-500/60 rounded-full"></div> Control
+          </div>
+          <div class="flex items-center gap-1.5 text-[11px] text-gray-400">
+            <div class="w-2.5 h-2.5 bg-trm-green/70 rounded-full"></div> Exposed
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── PARTNERS ──────────────────────────────────────────────────────────── -->
+<section class="py-20 bg-trm-gray border-b border-gray-200">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <p class="text-trm-red text-[10px] font-bold tracking-widest uppercase mb-4">Trusted By</p>
+    <h2 class="text-3xl font-black text-trm-dark mb-4">Canada's leading brands choose TRM.</h2>
+    <p class="text-gray-500 mb-12 max-w-xl mx-auto text-sm leading-relaxed">
+      From CPG to automotive, financial services to sports apparel—TRM partners with brands
+      that want to grow with real Canadian shoppers.
+    </p>
+    <div class="flex flex-wrap justify-center gap-5">
+      <div class="bg-gray-200 rounded-lg h-12 w-28 animate-pulse"></div>
+      <div class="bg-gray-200 rounded-lg h-12 w-32 animate-pulse"></div>
+      <div class="bg-gray-200 rounded-lg h-12 w-24 animate-pulse"></div>
+      <div class="bg-gray-200 rounded-lg h-12 w-36 animate-pulse"></div>
+      <div class="bg-gray-200 rounded-lg h-12 w-28 animate-pulse"></div>
+      <div class="bg-gray-200 rounded-lg h-12 w-32 animate-pulse"></div>
+    </div>
+    <p class="text-xs text-gray-400 mt-6">Partner logos coming soon</p>
+  </div>
+</section>
+
+
+<!-- ─── CONTACT ───────────────────────────────────────────────────────────── -->
+<section id="contact" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <p class="text-trm-red text-[10px] font-bold tracking-widest uppercase mb-4">Get Started</p>
+      <h2 class="text-4xl md:text-5xl font-black text-trm-dark leading-tight mb-5">
+        Ready to grow with Canadian shoppers?
+      </h2>
+      <p class="text-lg text-gray-500 leading-relaxed">
+        Whether you're a brand marketer building a strategy or an agency buyer ready to activate—
+        we'd love to connect. Choose the path that fits you best.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+
+      <!-- Media Kit -->
+      <div class="border border-gray-200 rounded-2xl p-8">
+        <div class="w-10 h-10 bg-red-50 rounded-xl flex items-center justify-center mb-5">
+          <svg class="w-5 h-5 text-trm-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414
+                 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-trm-dark mb-2">Request a Media Kit</h3>
+        <p class="text-gray-500 text-sm mb-6 leading-relaxed">
+          Get our full capabilities deck, audience data card, and rate card overview delivered to your inbox.
+        </p>
+
+        <form id="kit-form" onsubmit="submitForm(event,'kit')">
+          <div class="grid grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 mb-1.5">First Name *</label>
+              <input type="text" required placeholder="Jane"
+                class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 mb-1.5">Last Name *</label>
+              <input type="text" required placeholder="Smith"
+                class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm">
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="block text-xs font-semibold text-gray-700 mb-1.5">Work Email *</label>
+            <input type="email" required placeholder="jane@company.com"
+              class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm">
+          </div>
+          <div class="mb-4">
+            <label class="block text-xs font-semibold text-gray-700 mb-1.5">Company / Agency *</label>
+            <input type="text" required placeholder="Company name"
+              class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm">
+          </div>
+          <div class="mb-6">
+            <label class="block text-xs font-semibold text-gray-700 mb-1.5">I am a…</label>
+            <select class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-600 bg-white">
+              <option value="">Select role</option>
+              <option>Brand Marketer</option>
+              <option>Media Agency Buyer</option>
+              <option>Performance Marketer</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <button type="submit"
+            class="w-full bg-trm-red hover:bg-trm-red-dark text-white font-bold py-3.5 rounded-lg text-sm transition-colors">
+            Request Media Kit
+          </button>
+        </form>
+
+        <div id="kit-success" class="hidden text-center py-8">
+          <div class="w-12 h-12 bg-green-50 border border-green-200 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-trm-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+          </div>
+          <h4 class="text-lg font-bold text-trm-dark mb-2">Request received!</h4>
+          <p class="text-gray-500 text-sm">We'll send your media kit to your inbox within one business day.</p>
+        </div>
+      </div>
+
+      <!-- Book Meeting -->
+      <div class="bg-trm-dark border border-white/10 rounded-2xl p-8">
+        <div class="w-10 h-10 bg-trm-red/20 border border-trm-red/30 rounded-xl flex items-center justify-center mb-5">
+          <svg class="w-5 h-5 text-trm-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-2">Book a Meeting</h3>
+        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+          Talk directly with a TRM strategist about your brand objectives and how we can help you grow with Canadian shoppers.
+        </p>
+
+        <form id="meeting-form" onsubmit="submitForm(event,'meeting')">
+          <div class="grid grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="block text-xs font-semibold text-gray-300 mb-1.5">First Name *</label>
+              <input type="text" required placeholder="Jane"
+                class="w-full bg-white/10 border border-white/20 text-white placeholder-gray-500 rounded-lg px-4 py-3 text-sm focus:border-trm-red">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-300 mb-1.5">Last Name *</label>
+              <input type="text" required placeholder="Smith"
+                class="w-full bg-white/10 border border-white/20 text-white placeholder-gray-500 rounded-lg px-4 py-3 text-sm focus:border-trm-red">
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="block text-xs font-semibold text-gray-300 mb-1.5">Work Email *</label>
+            <input type="email" required placeholder="jane@company.com"
+              class="w-full bg-white/10 border border-white/20 text-white placeholder-gray-500 rounded-lg px-4 py-3 text-sm focus:border-trm-red">
+          </div>
+          <div class="mb-4">
+            <label class="block text-xs font-semibold text-gray-300 mb-1.5">Company / Agency *</label>
+            <input type="text" required placeholder="Company name"
+              class="w-full bg-white/10 border border-white/20 text-white placeholder-gray-500 rounded-lg px-4 py-3 text-sm focus:border-trm-red">
+          </div>
+          <div class="mb-6">
+            <label class="block text-xs font-semibold text-gray-300 mb-1.5">What would you like to discuss?</label>
+            <textarea rows="3" placeholder="Tell us about your brand, goals, or questions…"
+              class="w-full bg-white/10 border border-white/20 text-white placeholder-gray-500 rounded-lg px-4 py-3 text-sm resize-none focus:border-trm-red"></textarea>
+          </div>
+          <button type="submit"
+            class="w-full bg-trm-red hover:bg-trm-red-dark text-white font-bold py-3.5 rounded-lg text-sm transition-colors">
+            Book a Meeting
+          </button>
+        </form>
+
+        <div id="meeting-success" class="hidden text-center py-8">
+          <div class="w-12 h-12 bg-trm-green/20 border border-trm-green/40 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-trm-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+          </div>
+          <h4 class="text-lg font-bold text-white mb-2">Meeting request sent!</h4>
+          <p class="text-gray-400 text-sm">A TRM strategist will reach out within one business day to schedule time.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── FOOTER ────────────────────────────────────────────────────────────── -->
+<footer class="bg-trm-dark border-t border-white/10 py-12">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 mb-10">
+      <div>
+        <div class="flex items-center gap-2.5 mb-3">
+          <svg width="26" height="26" viewBox="0 0 32 32" fill="none">
+            <polygon points="16,2 30,29 2,29" fill="#CC1224"/>
+          </svg>
+          <span class="text-white font-extrabold text-sm">Triangle Retail Media</span>
+        </div>
+        <p class="text-gray-500 text-sm max-w-xs leading-relaxed">
+          A Canadian Tire Corporation company. Enabling brand growth through insight-driven media solutions.
+        </p>
+      </div>
+      <div class="grid grid-cols-2 gap-x-14 gap-y-2.5 text-sm">
+        <a href="#why-trm"     class="text-gray-400 hover:text-white transition-colors">Why TRM</a>
+        <a href="#solutions"   class="text-gray-400 hover:text-white transition-colors">Solutions</a>
+        <a href="#measurement" class="text-gray-400 hover:text-white transition-colors">Measurement</a>
+        <a href="#contact"     class="text-gray-400 hover:text-white transition-colors">Contact</a>
+      </div>
+    </div>
+    <div class="border-t border-white/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-gray-600 text-xs">© 2025 Triangle Retail Media. A division of Canadian Tire Corporation, Limited. All rights reserved.</p>
+      <div class="flex gap-6 text-xs">
+        <a href="#" class="text-gray-600 hover:text-gray-400 transition-colors">Privacy Policy</a>
+        <a href="#" class="text-gray-600 hover:text-gray-400 transition-colors">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  // ── Nav scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('nav-solid', window.scrollY > 40);
+  });
+
+  // ── Mobile menu
+  const menuBtn   = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const iconOpen  = document.getElementById('icon-open');
+  const iconClose = document.getElementById('icon-close');
+
+  menuBtn.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('hidden');
+    iconOpen.classList.toggle('hidden', !open);
+    iconClose.classList.toggle('hidden', open);
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+    });
+  });
+
+  // ── Solution tabs
+  document.getElementById('tab-nav').addEventListener('click', e => {
+    const btn = e.target.closest('.solution-tab');
+    if (!btn) return;
+    const target = btn.dataset.tab;
+
+    document.querySelectorAll('.solution-tab').forEach(t => {
+      t.classList.remove('active');
+      t.classList.add('text-gray-600');
+    });
+    btn.classList.add('active');
+    btn.classList.remove('text-gray-600');
+
+    document.querySelectorAll('.tab-panel').forEach(p => {
+      p.classList.toggle('hidden', p.dataset.panel !== target);
+    });
+  });
+
+  // ── Form submission (polished placeholder)
+  function submitForm(e, type) {
+    e.preventDefault();
+    const form    = document.getElementById(type === 'kit' ? 'kit-form' : 'meeting-form');
+    const success = document.getElementById(type === 'kit' ? 'kit-success' : 'meeting-success');
+    form.style.transition = 'opacity 0.25s';
+    form.style.opacity = '0';
+    setTimeout(() => {
+      form.classList.add('hidden');
+      success.classList.remove('hidden');
+      success.classList.add('fade-up');
+    }, 250);
+  }
+</script>
+</body>
+</html>
